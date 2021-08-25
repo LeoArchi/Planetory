@@ -16,11 +16,14 @@ function Astre:newAstre(name, radius, distanceFromParent, parentAstre)
   astre.speed = _globalSpeed/distanceFromParent
   astre.distanceFromParent = distanceFromParent
 
+
   if parentAstre ~= nil then
+    astre.focusOn = false
     astre.posX = parentAstre.posX + distanceFromParent
     astre.posY = parentAstre.posY
     parentAstre.satellites[name] = astre
   else
+    astre.focusOn = true
     astre.posX = love.graphics.getWidth()/2
     astre.posY = love.graphics.getHeight()/2
     _allAstres[name] = astre
