@@ -1,3 +1,5 @@
+  require("colorize") -- Requis pour calculer les couleurs des astres
+
 -- La table "Astre" correspond à l'objet astre, qui contiendra le constructeur, les getters, etc...
 Astre = {}
 
@@ -7,7 +9,7 @@ local _allAstres = {}
 local _globalSpeed = 2
 
 -- Le constructeur
-function Astre:newAstre(name, radius, distanceFromParent, parentAstre)
+function Astre:newAstre(name, radius, distanceFromParent, parentAstre, color)
   astre = {}
   astre.name = name
   astre.radius = radius
@@ -15,7 +17,7 @@ function Astre:newAstre(name, radius, distanceFromParent, parentAstre)
   astre.angle = 0
   astre.speed = _globalSpeed/distanceFromParent
   astre.distanceFromParent = distanceFromParent
-
+  astre.color = color
 
   if parentAstre ~= nil then
     astre.focusOn = false
@@ -83,10 +85,12 @@ local function _draw(astres, parentAstre)
 
     -- Si j'ai un astre parent, je commence par dessiner l'orbite
     if parentAstre ~= nil then
+      love.graphics.setColor(1, 1, 1)
       love.graphics.circle("line", parentAstre.posX, parentAstre.posY, astre.distanceFromParent, 64)
     end
 
     -- Je dessine mon astre
+    love.graphics.setColor(hex(astre.color))
     love.graphics.circle("fill", astre.posX, astre.posY, astre.radius, 32)
 
     _draw(astre.satellites, astre)

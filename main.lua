@@ -1,14 +1,14 @@
 require 'astre'
 
 function love.load()
-  sun = Astre:newAstre("Sun", 80, 0)
+  sun = Astre:newAstre("Sun", 80, 0, nil, "#fcba03")
 
-  mercury = Astre:newAstre("Mercury", 15, 150, sun)
+  mercury = Astre:newAstre("Mercury", 15, 150, sun, "#615945")
 
-  venus = Astre:newAstre("Venus", 23, 300, sun)
+  venus = Astre:newAstre("Venus", 23, 300, sun, "#f7d574")
 
-  earth = Astre:newAstre("Earth", 25, 500, sun)
-  moon = Astre:newAstre("Moon", 5, 50, earth)
+  earth = Astre:newAstre("Earth", 25, 500, sun, "#26a1ff")
+  moon = Astre:newAstre("Moon", 5, 50, earth, "#a8a8a8")
 
   fps = nil
   scale = 1
@@ -37,6 +37,8 @@ function love.wheelmoved(x, y)
 end
 
 function love.draw()
+
+  love.graphics.setColor(1, 1, 1)
 
   love.graphics.print("FPS  : " .. fps, 10, 10)
   love.graphics.print("ZOOM : " .. scale, 10, 25)
