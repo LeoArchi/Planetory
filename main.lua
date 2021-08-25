@@ -1,14 +1,17 @@
 require 'astre'
+require 'gui'
 
 function love.load()
-  sun = Astre:newAstre("Sun", 80, 0, nil, "#fcba03")
+  sun = Astre:newAstre("Sun", 65, 0, nil, "#fcba03")
 
   mercury = Astre:newAstre("Mercury", 15, 150, sun, "#615945")
 
-  venus = Astre:newAstre("Venus", 23, 300, sun, "#f7d574")
+  venus = Astre:newAstre("Venus", 23, 260, sun, "#f7d574")
 
-  earth = Astre:newAstre("Earth", 25, 500, sun, "#26a1ff")
+  earth = Astre:newAstre("Earth", 25, 370, sun, "#26a1ff")
   moon = Astre:newAstre("Moon", 5, 50, earth, "#a8a8a8")
+
+  mars = Astre:newAstre("Mars", 18, 470, sun, "#f04705")
 
   fps = nil
   scale = 1
@@ -38,12 +41,11 @@ end
 
 function love.draw()
 
-  love.graphics.setColor(1, 1, 1)
-
-  love.graphics.print("FPS  : " .. fps, 10, 10)
-  love.graphics.print("ZOOM : " .. scale, 10, 25)
+  -- Dessin des astres
   Astre:draw()
-
   --Astre:drawHierarchy(10, 10)
+
+  -- Dessin du GUI
+  Gui:draw()
 
 end

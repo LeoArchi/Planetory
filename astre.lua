@@ -1,4 +1,4 @@
-  require("colorize") -- Requis pour calculer les couleurs des astres
+require("colorize") -- Requis pour calculer les couleurs des astres
 
 -- La table "Astre" correspond à l'objet astre, qui contiendra le constructeur, les getters, etc...
 Astre = {}
